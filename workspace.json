@@ -1,10 +1,79 @@
 {
-  
-  
   "version": 2,
-  
-  "projects": {},
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/express"
+  },
+  "defaultProject": "task-api",
+  "projects": {
+    "task-api": {
+      "root": "apps/task-api",
+      "sourceRoot": "apps/task-api/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/task-api",
+            "main": "apps/task-api/src/main.ts",
+            "tsConfig": "apps/task-api/tsconfig.app.json"
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/task-api/src/environments/environment.ts",
+                  "with": "apps/task-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "task-api:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/task-api/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/task-api"],
+          "options": {
+            "jestConfig": "apps/task-api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "task-domain": {
+      "root": "libs/task/domain",
+      "sourceRoot": "libs/task/domain/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/task/domain/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/task/domain"],
+          "options": {
+            "jestConfig": "libs/task/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
   }
 }
