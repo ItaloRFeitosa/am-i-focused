@@ -24,6 +24,12 @@
     },
     "task-domain": {
       "tags": []
+    },
+    "core-utils": {
+      "tags": []
+    },
+    "core-domain": {
+      "tags": []
     }
   }
 }

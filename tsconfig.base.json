@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@am-i-focused/task/domain": ["libs/task/domain/src/index.ts"]
+      "@am-i-focused/task/domain/*": ["libs/task/domain/src/*"],
+      "@am-i-focused/core/utils/*": ["libs/core/utils/src/*"],
+      "@am-i-focused/core/domain/*": ["libs/core/domain/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
