@@ -6,6 +6,8 @@ import { guard } from "./guard"
 import { DomainError, isDomainError } from "@am-i-focused/core/domain/domain-error";
 import { GuardError } from "@am-i-focused/core/utils/guard";
 
+
+// TODO: add better error logs
 export function create (timerProps: TimerProps): Timer | DomainError | GuardError {
   const guardResult = guard(timerProps)
   if(!guardResult.valid){

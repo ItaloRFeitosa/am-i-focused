@@ -5,15 +5,16 @@ function is(status: string){
   return (taskStatus: TaskStatus) => String(taskStatus) === status
 }
 
-const isReady = is('ready')
+export const isReady = is('ready')
 
-const isFocused = is('focused')
+export const isFocused = is('focused')
 
-const isPaused = is('paused')
+export const isPaused = is('paused')
 
-const isStopped = is('stopped')
+export const isStopped = is('stopped')
 
-function create ({ status }: TaskStatusProps): TaskStatus | InvalidTaskStatusError {
+// TODO: add better error logs
+export function create ({ status }: TaskStatusProps): TaskStatus | InvalidTaskStatusError {
   if(status === undefined){
     return "ready"
   }
@@ -27,10 +28,3 @@ function create ({ status }: TaskStatusProps): TaskStatus | InvalidTaskStatusErr
   return status as TaskStatus;
 };
 
-export default {
-  isReady,
-  isFocused,
-  isPaused,
-  isStopped,
-  create,
-}

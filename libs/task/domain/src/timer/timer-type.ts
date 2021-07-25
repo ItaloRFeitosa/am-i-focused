@@ -1,6 +1,7 @@
 import { invalidTimerType, InvalidTimerTypeError } from './errors';
 import { TimerType, TimerTypeProps } from './types';
 
+// TODO: add better error logs
 export const create = ({
   type,
 }: TimerTypeProps): TimerType | InvalidTimerTypeError => {

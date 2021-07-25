@@ -7,12 +7,18 @@ export type TaskStatusProps = {
 
 export type TaskStatus = 'ready' | 'focused' | 'paused' | 'stopped';
 
+export type TaskTimersProps = {
+  timers?: TimerProps[]
+}
+
+export type TaskTimers = Timer[]
+
 export type Task = {
   readonly id: UniqueId;
   readonly name: string;
   readonly userId: UniqueId;
   readonly status: TaskStatus;
-  readonly timers: Timer[];
+  readonly timers: TaskTimers;
   readonly createdAt: Date;
 };
 
